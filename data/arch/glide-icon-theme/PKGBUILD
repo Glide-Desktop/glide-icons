@@ -27,5 +27,7 @@ package() {
     cd "$pkgname"
     install -d "$pkgdir/usr/share/icons"
     ./install.sh -d "$pkgdir/usr/share/icons" -t all
+    # pacman's gtk-update-icon-cache hook builds these on the system.
+    find "$pkgdir/usr/share/icons" -name icon-theme.cache -delete
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
