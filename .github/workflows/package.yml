@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Tools
         run: |
-          pacman -Syu --noconfirm --needed git github-cli
+          pacman -Syu --noconfirm --needed git github-cli gtk-update-icon-cache
           useradd -m builder
 
       - uses: actions/checkout@v4
