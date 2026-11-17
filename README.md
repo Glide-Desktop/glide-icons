@@ -1,34 +1,23 @@
-## Colloid icon theme
+# Glide icons
 
-![1](preview.png?raw=true)
+The icon theme of the [Glide desktop](https://github.com/Glide-Desktop/glide),
+packaged as `glide-icon-theme`.
 
-## Donate
+It is based on the [Colloid icon theme](https://github.com/vinceliuice/Colloid-icon-theme)
+by Vince Liu (vinceliuice), GPL-3.0, taken at upstream commit
+`ceac6608` (2026-08-29) with its history kept. The upstream README is kept as
+[UPSTREAM-README.md](UPSTREAM-README.md). Glide changes it bit by bit from here;
+upstream changes are merged by hand.
 
-If you like my project, you can buy me a coffee:
+The themes keep Colloid's names (`Colloid`, `Colloid-<Accent>`,
+`Colloid-<Accent>-Dark`, `Colloid-<Accent>-Light`), because the Glide shell picks
+the variant for the appearance and accent by those names.
 
-<span class="paypal"><a href="https://www.paypal.me/vinceliuice" title="Donate to this project using Paypal"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" alt="PayPal donate button" /></a></span>
+## Package
 
-## Install tips
+`data/arch/glide-icon-theme/PKGBUILD` runs `install.sh -t all` into the package
+(every accent, the default scheme only). A `v*` tag builds it in CI and attaches
+it to the release, and the next Glide release puts it into the pacman
+repository at `pkg.mindenit.org`.
 
-Usage:  `./install.sh`  **[OPTIONS...]**
-
-```
--d, --dest DIR          Specify destination directory (Default: $HOME/.local/share/icons)
--n, --name NAME         Specify theme name (Default: Colloid)
--s, --scheme VARIANTS   Specify folder colorscheme variant(s) [default|nord|dracula|gruvbox|everforest|catppuccin|all]
--t, --theme VARIANTS    Specify folder color variant(s) [default|purple|pink|red|orange|yellow|green|teal|grey|all] (Default: blue)
--a, --alternative       Install alternative icons for software center and file-manager
--p, --kde-plasma        Replaces Apple logo with KDE Plasma logo.
--b, --bold              Install bolder panel icons version (1.5px size)
--notint, --notint       Disable Follow ColorSheme for folders on KDE Plasma
--h, --help              Show help
-```
-> For example: install teal nord version -> run: `./install.sh -s nord -t teal`
-
-> For more information, run: `./install.sh -h`
-
-![bold](https://github.com/vinceliuice/WhiteSur-icon-theme/blob/master/bold-size.png?raw=true)
-
-![folders](folders.png?raw=true)
-
-![schemes](schemes.png?raw=true)
+License: GPL-3.0 (see [LICENSE](LICENSE)).

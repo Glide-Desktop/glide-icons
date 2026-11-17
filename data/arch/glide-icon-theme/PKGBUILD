@@ -1,0 +1,31 @@
+pkgname=glide-icon-theme
+pkgver=0.r0.g0000000
+pkgrel=1
+pkgdesc="Icon theme of the Glide desktop, based on the Colloid icon theme"
+arch=(any)
+url="https://github.com/Glide-Desktop/glide-icons"
+license=(GPL-3.0-or-later)
+depends=(hicolor-icon-theme)
+makedepends=(git)
+provides=(colloid-icon-theme)
+conflicts=(colloid-icon-theme colloid-icon-theme-git)
+options=(!strip !debug)
+_git="${GLIDE_GIT:-https://github.com/Glide-Desktop}"
+source=("$pkgname::git+$_git/glide-icons")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$pkgname"
+    if tag="$(git describe --long --tags --abbrev=7 2>/dev/null)"; then
+        printf '%s' "$tag" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    else
+        printf '0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    fi
+}
+
+package() {
+    cd "$pkgname"
+    install -d "$pkgdir/usr/share/icons"
+    ./install.sh -d "$pkgdir/usr/share/icons" -t all
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
